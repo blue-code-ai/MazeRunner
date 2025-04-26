@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maze Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">MazeRunner</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#levels">Levels</a></li>
+        </ul>
+    </nav>
+
+    <!-- Landing Section -->
+    <section class="landing">
+        <div class="illusion-wrapper">
+            <div class="illusion-bg"></div>
+        </div>
+        <button class="start-btn" onclick="scrollToLevels()">Start Generating</button>
+    </section>
+    <!-- Level Section -->
+    <section class="levels" id="levels">
+        <h2>Choose a Level</h2>
+        <div class="level-container">
+            <div class="level-card" onclick="selectLevel(16, 4)">
+                Easy<br>16x16<br>
+                <img src="media/thumbnail-easy.png" alt="easy-example" class="example-maze-image">
+            </div>
+            <div class="level-card" onclick="selectLevel(32, 8)">
+                Medium<br>32x32<br>
+                <img src="media/thumbnail-medium.png" alt="medium-example" class="example-maze-image">
+            </div>
+            <div class="level-card" onclick="selectLevel(64, 16)">
+                Hard<br>64x64<br>
+                <img src="media/thumbnail-hard.png" alt="hard-example" class="example-maze-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Maze Container -->
+    <section class="maze-section" id="maze-section">
+        <div class="controler-box">
+            <!-- Directional control buttons -->
+            <button class="control-btn" id="down-btn" onclick="movePlayer('ArrowDown')">↓</button>
+            <div id="left-right">
+                <button class="control-btn" id="left-btn" onclick="movePlayer('ArrowLeft')">←</button>
+                <button class="control-btn" id="right-btn" onclick="movePlayer('ArrowRight')">→</button>
+            </div>
+            <button class="control-btn" id="up-btn" onclick="movePlayer('ArrowUp')">↑</button>
+
+            <div class="control-actions">
+                <button class="action-btn" id="restart-btn" onclick="restartMaze()">Restart</button>
+                <button class="action-btn" id="regenerate-btn" onclick="regenerateMaze()">Regenerate</button>
+                <button class="action-btn" id="goToLevels" onclick="scrollToLevels()">Select level</button>
+                <button class="action-btn" id="solve-btn">Solve</button>
+            </div>
+            <div class="player-start-btn action-btn" onclick="startPlayer()">Start</div>
+            <div class="timer">
+                Time: <span id="timer">0</span> seconds
+            </div>
+        </div>
+        <div id="maze-board-holder">
+            <div class="maze-container"></div>
+        </div>
+
+
+    </section>
+    <div id="win-overlay">
+        <div id="win-message">
+            <h2>Congratulations!! You Escaped the Maze in <span id="win-time"></span> seconds. </h2>
+            <button onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
