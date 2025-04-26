@@ -256,7 +256,6 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     position: relative;
-    box-shadow: inset 0 0 5px #6b6b6b;
 }
 
 .player {
