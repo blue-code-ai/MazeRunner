@@ -12,6 +12,7 @@ let mazeSolved = false;
 let isGenerated = false;
 let solutionPath = [];
 let isAutoSolving = false;
+let solutionAnimationInterval;
 
 const timerDisplay = document.getElementById("timer");
 const winTimeDisplay = document.getElementById("win-time");
@@ -143,9 +144,9 @@ function animateSolution(solutionPath, speed = 100) {
     let index = 0;
     isAutoSolving = true;
 
-    const interval = setInterval(() => {
+    solutionAnimationInterval = setInterval(() => {
         if (index >= solutionPath.length) {
-            clearInterval(interval);
+            clearInterval(solutionAnimationInterval);
             isAutoSolving = false;
             return;
         }
@@ -264,6 +265,7 @@ function restartGame() {
     scrollToLevels();
 }
 function restartMaze() {
+    if(isAutoSolving) clearInterval(solutionAnimationInterval);
     document.querySelectorAll(".solution-path").forEach(cell => {
         cell.classList.remove("solution-path");
     });
